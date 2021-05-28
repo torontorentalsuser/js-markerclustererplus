@@ -197,7 +197,7 @@ export class ClusterIcon extends OverlayViewSafe {
 
     // Fix for Issue 157
     this.boundsChangedListener_ = google.maps.event.addListener(
-      this.getMap(),
+      this.cluster_.getMap(),
       "bounds_changed",
       () => {
         cDraggingMapByCluster = cMouseDownInCluster;
