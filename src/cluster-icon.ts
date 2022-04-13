@@ -204,7 +204,8 @@ export class ClusterIcon extends OverlayViewSafe {
       }
     );
 
-    google.maps.event.addDomListener(this.div_, "mousedown", () => {
+    
+    this.div_.addEventListener("mousedown", () => {
       cMouseDownInCluster = true;
       cDraggingMapByCluster = false;
     });
@@ -213,12 +214,12 @@ export class ClusterIcon extends OverlayViewSafe {
     // But it doesn't work with earlier releases so do a version check.
     if (gmVersion >= 332) {
       // Ugly version-dependent code
-      google.maps.event.addDomListener(this.div_, "touchstart", (e: Event) => {
+      this.div_.addEventListener("touchstart", (e: Event) => {
         e.stopPropagation();
       });
     }
 
-    google.maps.event.addDomListener(this.div_, "click", (e: Event) => {
+    this.div_.addEventListener("click", (e: Event) => {
       cMouseDownInCluster = false;
       if (!cDraggingMapByCluster) {
         /**
@@ -255,7 +256,7 @@ export class ClusterIcon extends OverlayViewSafe {
       }
     });
 
-    google.maps.event.addDomListener(this.div_, "mouseover", () => {
+    this.div_.addEventListener("mouseover", () => {
       /**
        * This event is fired when the mouse moves over a cluster marker.
        * @name MarkerClusterer#mouseover
@@ -265,7 +266,7 @@ export class ClusterIcon extends OverlayViewSafe {
       google.maps.event.trigger(mc, "mouseover", this.cluster_);
     });
 
-    google.maps.event.addDomListener(this.div_, "mouseout", () => {
+    this.div_.addEventListener("mouseout", () => {
       /**
        * This event is fired when the mouse moves out of a cluster marker.
        * @name MarkerClusterer#mouseout
